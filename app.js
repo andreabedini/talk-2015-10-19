@@ -26762,6 +26762,9 @@ exports.DebugItem = function DebugItem(lineno, filename) {
     });
 
   function update() {
+    //
+    // update speeds
+    //
     for (var i = 0; i < N; ++i) {
       var h = cells[(i + 1) % N].x - cells[i].x - 1;
 
@@ -26775,6 +26778,12 @@ exports.DebugItem = function DebugItem(lineno, filename) {
         cells[i].v -= 1;
       }
 
+    }
+
+    //
+    // update positions
+    //
+    for (var i = 0; i < N; ++i) {
       cells[i].x += cells[i].v;
       cells[i].x %= L;
     }
@@ -26874,6 +26883,9 @@ Reveal.initialize({
     });
 
   function update() {
+    //
+    // update speeds
+    //
     for (var i = 0; i < N; ++i) {
       var h = cells[(i + 1) % N].x - cells[i].x - 1;
 
@@ -26886,7 +26898,12 @@ Reveal.initialize({
       if (cells[i].v > 0 && Math.random() < p) {
         cells[i].v -= 1;
       }
+    }
 
+    //
+    // update positions
+    //
+    for (var i = 0; i < N; i++) {
       cells[i].x += cells[i].v;
       cells[i].x %= L;
     }
